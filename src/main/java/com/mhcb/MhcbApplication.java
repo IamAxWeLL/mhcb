@@ -1,4 +1,4 @@
-package com.mhcb.mhcb;
+package com.mhcb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
