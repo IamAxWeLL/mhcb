@@ -1,4 +1,4 @@
-package com.mhcb.mhcb;
+package com.mhcb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
