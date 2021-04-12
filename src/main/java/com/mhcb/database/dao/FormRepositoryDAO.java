@@ -16,7 +16,7 @@ public class FormRepositoryDAO {
 
     public Form add(String state) {
         final Form newForm = new Form();
-        FormStateMicroFactory formStateMicroFactory = new FormStateMicroFactory();
+        final FormStateMicroFactory formStateMicroFactory = new FormStateMicroFactory();
         newForm.setFormState(formStateMicroFactory.getFormStateMicro(state));
         return formRepository.save(newForm);
     }

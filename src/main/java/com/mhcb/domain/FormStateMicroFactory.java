@@ -1,15 +1,13 @@
 package com.mhcb.domain;
 
+import static java.util.Objects.isNull;
+
 public class FormStateMicroFactory {
 
     public FormStateMicro getFormStateMicro(String stateType) {
-        if (stateType == null) {
-            return null;
+        if (isNull(stateType)) {
+            throw new IllegalArgumentException("State type cannot be null.");
         }
-        if (stateType.equalsIgnoreCase("NEW")) {
-            return FormStateMicro.of(State.NEW.getStateType());
-        }  else {
-            return null;
-        }
+        return FormStateMicro.of(stateType);
     }
 }

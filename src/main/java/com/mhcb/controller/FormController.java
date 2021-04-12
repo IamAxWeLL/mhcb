@@ -17,7 +17,7 @@ public class FormController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Form addForm(@RequestParam String state) {
+    public Form addForm(@RequestParam final String state) {
         return formRepositoryDAO.add(state);
     }
 }
