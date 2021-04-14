@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Form {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Convert(converter = FormConverter.class)

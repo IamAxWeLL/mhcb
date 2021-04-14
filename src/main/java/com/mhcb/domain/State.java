@@ -10,7 +10,7 @@ public enum State {
     State() {
     }
 
-    private State(String stateType) {
+    State(final String stateType) {
         this.stateType = stateType;
     }
 
