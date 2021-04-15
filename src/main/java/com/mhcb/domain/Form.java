@@ -1,5 +1,6 @@
 package com.mhcb.domain;
 
+import com.mhcb.core.state.FormState;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

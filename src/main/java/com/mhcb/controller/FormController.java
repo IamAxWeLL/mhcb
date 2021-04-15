@@ -2,6 +2,7 @@ package com.mhcb.controller;
 
 import com.mhcb.database.dao.FormRepositoryDAO;
 import com.mhcb.domain.Form;
+import com.mhcb.domain.dto.FormDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +20,10 @@ public class FormController {
     @ResponseStatus(HttpStatus.CREATED)
     public Form addForm(@RequestParam String state) {
         return formRepositoryDAO.add(state);
+    }
+
+    @GetMapping
+    public FormDTO getFormStates(@RequestParam Long id) {
+        return formRepositoryDAO.getAvailableFormStates(id);
     }
 }
