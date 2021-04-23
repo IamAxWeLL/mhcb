@@ -33,6 +33,7 @@ public class FormStateFactory {
         map.put(State.MONITORING.name(), new FormStateMonitoring());
         map.put(State.MONITORING_COMPLETED.name(), new FormStateMonitoringCompleted());
         map.put(State.PENDING.name(), new FormStatePending());
+        map.put(State.ADMIN.name(), new FormStatesForAdmin());
     }
 
     public FormState getFormState(final String stateType) {
