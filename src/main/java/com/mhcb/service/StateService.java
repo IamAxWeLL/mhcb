@@ -4,16 +4,18 @@ import com.mhcb.core.state.FormState;
 import com.mhcb.core.state.impl.*;
 import com.mhcb.domain.FormStateFactory;
 import com.mhcb.domain.UserRole;
-import com.mhcb.domain.dto.FormDTO;
 import com.mhcb.domain.dto.StateDTO;
+import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.mhcb.domain.UserRole.ADMIN;
+import static java.util.stream.Collectors.toList;
 
 @Service
+@Data
 public class StateService {
     public StateDTO getAllStates(final UserRole userRole, final String currentState) {
         final List<FormState> list = new ArrayList<>();
@@ -49,6 +51,10 @@ public class StateService {
         return convertFormStateToString(list);
     }
     private StateDTO convertFormStateToString(final List<FormState> stateList){
-        //todo implement logic
+        final List<String> collectedList = stateList.stream().map(FormState::getCurrentState)
+                .collect(toList());
+        final StateDTO stateDTO = new StateDTO();
+        stateDTO.setAvailableStates(collectedList);
+        return stateDTO;
     }
 }
