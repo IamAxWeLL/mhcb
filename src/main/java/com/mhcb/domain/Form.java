@@ -20,5 +20,4 @@ public class Form {
 
     @Convert(converter = FormConverter.class)
     private FormState formState;
-    private UserRole userRole;
 }

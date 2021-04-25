@@ -8,7 +8,7 @@ public class UserDTO {
     private String login;
     private String password;
 
-    public UserDTO(String login, String password) {
+    public UserDTO(final String login, final String password) {
         this.login = login;
         this.password = password;
     }
