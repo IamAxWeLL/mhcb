@@ -16,7 +16,7 @@ public class FormStateRejectPhoneInterview implements FormState {
     }
 
     @Override
-    public List<FormState> getAvailableStates(final UserRole userRole) {
+    public List<FormState> getAvailableStates() {
         final List<FormState> list = new ArrayList<>();
         list.add(new FormStateRejectPhoneInterview());
         return list;

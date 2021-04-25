@@ -16,7 +16,7 @@ public class FormStateVetting implements FormState {
     }
 
     @Override
-    public List<FormState> getAvailableStates(final UserRole userRole) {
+    public List<FormState> getAvailableStates() {
         final List<FormState> list = new ArrayList<>();
         list.add(new FormStateVetting());
         list.add(new FormStateRejectVetting());

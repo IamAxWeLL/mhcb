@@ -9,9 +9,8 @@ import com.mhcb.domain.dto.FormDTO;
 import com.mhcb.exception.FormNotFoundException;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityNotFoundException;
-
-import static com.mhcb.domain.UserRole.*;
+import static com.mhcb.domain.UserRole.ADMIN;
+import static com.mhcb.domain.UserRole.valueOf;
 
 @Repository
 public class FormRepositoryDAO {
@@ -31,28 +30,29 @@ public class FormRepositoryDAO {
         return formRepository.save(newForm);
     }
 
-    public FormDTO getAvailableFormStates(final Long id) {
+    public FormDTO getAvailableFormStates(final Long id, final UserRole userRole) {
+        if (userRole.equals(ADMIN)) {
+
+        }
         final Form form = formRepository
                 .findById(id)
                 .orElseThrow(() -> new FormNotFoundException("Form with id: " + id + " not found"));
 
         final FormDTO formDTO = new FormDTO();
         formDTO.setId(form.getId());
-        formDTO.setUserRole(form.getUserRole());
 
         final FormState formState = form.getFormState();
         final FormStateFactory factory = new FormStateFactory();
 
-        //нужно ли писать логику чтобы при выборе админа выставляло state ADMIN либо же заполняло если там null?
-        if(formDTO.getUserRole().equals(ADMIN)) {
-            formDTO.setCurrentState(factory.getFormState(ADMIN.name()));
-            formDTO.setAvailableStates(formState.getAvailableStates(ADMIN));
-        } else if(formDTO.getUserRole().equals(USER)) {
-            formDTO.setCurrentState(formState);
-            formDTO.setAvailableStates(formState.getAvailableStates(USER));
-        } else {
-            throw new EntityNotFoundException("Role " + formDTO.getUserRole() + " is not found");
-        }
+//        if(formDTO.getUserRole().equals(ADMIN)) {
+//            formDTO.setCurrentState(factory.getFormState(ADMIN.name()));
+//            formDTO.setAvailableStates(formState.getAvailableStates(ADMIN));
+//        } else if(formDTO.getUserRole().equals(USER)) {
+//            formDTO.setCurrentState(formState);
+//            formDTO.setAvailableStates(formState.getAvailableStates(USER));
+//        } else {
+//            throw new EntityNotFoundException("Role " + formDTO.getUserRole() + " is not found");
+//        }
 
         return formDTO;
     }
