@@ -2,7 +2,8 @@ package com.mhcb.service;
 
 import com.mhcb.core.state.FormState;
 import com.mhcb.core.state.impl.*;
-import com.mhcb.domain.FormStateFactory;
+import com.mhcb.domain.FormStateFactory2;
+import com.mhcb.domain.State;
 import com.mhcb.domain.UserRole;
 import com.mhcb.domain.dto.StateDTO;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import static java.util.stream.Collectors.toList;
 
 @Service
 public class StateService {
-    public StateDTO getAllStates(final UserRole userRole, final String currentState) {
+    public StateDTO getAllStates(final UserRole userRole, final State currentState) {
         final List<FormState> list = new ArrayList<>();
         if(userRole.equals(ADMIN)){
             list.add(new FormStateNew());
@@ -40,7 +41,7 @@ public class StateService {
             list.add(new FormStatePending());
         }
         else {
-            final FormStateFactory factory = new FormStateFactory();
+            final FormStateFactory2 factory = new FormStateFactory2();
             final FormState formState = factory.getFormState(currentState);
             final List<FormState> availableStates = formState.getAvailableStates();
             list.addAll(availableStates);

@@ -1,5 +1,6 @@
 package com.mhcb.controller;
 
+import com.mhcb.domain.State;
 import com.mhcb.domain.UserRole;
 import com.mhcb.domain.dto.StateDTO;
 import com.mhcb.service.StateService;
@@ -18,7 +19,7 @@ public class StateController {
     }
 
     @GetMapping
-    public StateDTO getAllStates(final UserRole userRole, final String currentState) {
+    public StateDTO getAllStates(final UserRole userRole, final State currentState) {
 
         return stateService.getAllStates(userRole, currentState);
     }

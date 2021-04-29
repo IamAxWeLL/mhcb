@@ -1,6 +1,7 @@
 package com.mhcb.controller;
 
 import com.mhcb.database.dao.FormRepositoryDAO;
+import com.mhcb.domain.State;
 import com.mhcb.domain.UserRole;
 import com.mhcb.domain.dto.FormDTO;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,7 @@ public class FormController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addForm(final String state) {
+    public void addForm(final State state) {
         formRepositoryDAO.add(state);
     }
 

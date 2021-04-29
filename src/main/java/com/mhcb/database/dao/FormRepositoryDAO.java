@@ -1,9 +1,7 @@
 package com.mhcb.database.dao;
 
 import com.mhcb.database.repository.FormRepository;
-import com.mhcb.domain.Form;
-import com.mhcb.domain.FormStateFactory;
-import com.mhcb.domain.UserRole;
+import com.mhcb.domain.*;
 import com.mhcb.domain.dto.FormDTO;
 import com.mhcb.exception.FormNotFoundException;
 import com.mhcb.service.StateService;
@@ -20,9 +18,9 @@ public class FormRepositoryDAO {
         this.stateService = stateService;
     }
 
-    public Form add(final String state) {
+    public Form add(final State state) {
         final Form newForm = new Form();
-        final FormStateFactory factory = new FormStateFactory();
+        final FormStateFactory2 factory = new FormStateFactory2();
         newForm.setFormState(factory.getFormState(state));
         return formRepository.save(newForm);
     }
@@ -34,8 +32,8 @@ public class FormRepositoryDAO {
 
         final FormDTO formDTO = new FormDTO();
         formDTO.setId(form.getId());
-        final String currentState = form.getFormState().getCurrentState();
-        formDTO.setCurrentState(currentState);
+        final State currentState = State.valueOf(form.getFormState().getCurrentState());
+        formDTO.setCurrentState(currentState.name());
         formDTO.setAvailableStates(stateService.getAllStates(userRole, currentState).getAvailableStates());
         return formDTO;
     }
