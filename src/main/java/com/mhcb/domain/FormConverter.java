@@ -23,6 +23,6 @@ public class FormConverter implements AttributeConverter<FormState, String> {
         if (state == null) {
             return null;
         }
-        return new FormStateFactory().getFormState(state);
+        return new FormStateFactory().getFormStateForString(state);
     }
 }

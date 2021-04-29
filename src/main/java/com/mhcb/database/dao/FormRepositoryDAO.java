@@ -20,8 +20,8 @@ public class FormRepositoryDAO {
 
     public Form add(final State state) {
         final Form newForm = new Form();
-        final FormStateFactory2 factory = new FormStateFactory2();
-        newForm.setFormState(factory.getFormState(state));
+        final FormStateFactory factory = new FormStateFactory();
+        newForm.setFormState(factory.getFormStateForState(state));
         return formRepository.save(newForm);
     }
 
