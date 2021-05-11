@@ -1,30 +1,20 @@
 package com.mhcb.database.dao;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
 import com.mhcb.database.repository.UserRepository;
 import com.mhcb.domain.User;
 import com.mhcb.exception.UserNotFoundException;
-
-import java.util.ArrayList;
-
-import java.util.Optional;
-import javax.persistence.EntityExistsException;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @ContextConfiguration(classes = {UserRepositoryDAO.class})
 @ExtendWith(SpringExtension.class)
@@ -69,4 +59,3 @@ public class UserRepositoryDAOTest {
         verify(this.userRepository).findById((Long) any());
     }
 }
-

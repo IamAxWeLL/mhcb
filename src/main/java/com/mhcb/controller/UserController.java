@@ -2,7 +2,7 @@ package com.mhcb.controller;
 
 import com.mhcb.database.dao.UserRepositoryDAO;
 import com.mhcb.domain.User;
-import com.mhcb.domain.dto.UserDTO;
+import com.mhcb.domain.dto.Person;
 import com.mhcb.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +31,7 @@ public class UserController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public User addUser(@RequestBody final UserDTO dto) {
+    public User addUser(@RequestBody final Person dto) {
         return userRepositoryDAO.add(dto.getLogin(), dto.getPassword());
     }
 

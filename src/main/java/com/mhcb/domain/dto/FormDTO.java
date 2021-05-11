@@ -9,4 +9,6 @@ public class FormDTO {
     private Long id;
     private String currentState;
     private List<String> availableStates;
+    private Address address;
+    private Person person;
 }
