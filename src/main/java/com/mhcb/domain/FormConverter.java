@@ -9,7 +9,7 @@ import static java.util.Objects.isNull;
 public class FormConverter implements AttributeConverter<FormState, String> {
 
     @Override
-    public String convertToDatabaseColumn(FormState state) {
+    public String convertToDatabaseColumn(final FormState state) {
         if (state == null) {
             return "";
         }
