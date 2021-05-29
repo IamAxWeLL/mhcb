@@ -31,8 +31,8 @@ public class UserController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public User addUser(@RequestBody final Person dto) {
-        return userRepositoryDAO.add(dto.getLogin(), dto.getPassword());
+    public User addUser(@RequestBody final Person person) {
+        return userRepositoryDAO.add(person);
     }
 
     @DeleteMapping(value = "/{id}")
