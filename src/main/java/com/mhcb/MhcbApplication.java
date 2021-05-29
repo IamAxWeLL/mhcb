@@ -9,5 +9,4 @@ public class MhcbApplication {
     public static void main(String[] args) {
         SpringApplication.run(MhcbApplication.class, args);
     }
-
 }

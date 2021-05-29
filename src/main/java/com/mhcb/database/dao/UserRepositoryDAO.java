@@ -2,6 +2,7 @@ package com.mhcb.database.dao;
 
 import com.mhcb.database.repository.UserRepository;
 import com.mhcb.domain.User;
+import com.mhcb.domain.dto.Person;
 import com.mhcb.exception.UserNotFoundException;
 import org.springframework.stereotype.Repository;
 
@@ -18,13 +19,13 @@ public class UserRepositoryDAO {
         this.userRepository = userRepository;
     }
 
-    public User add(final String login, final String password) {
-        if (userRepository.findUserByLogin(login).isPresent()) {
-            throw new EntityExistsException("User with login: " + login + "already exists");
+    public User add(final Person person) {
+        if (userRepository.findUserByLogin(person.getLogin()).isPresent()) {
+            throw new EntityExistsException("User with login: " + person.getLogin() + "already exists");
         }
         final User user = new User();
-        user.setLogin(login);
-        user.setPassword(password);
+        user.setLogin(person.getLogin());
+        user.setPassword(person.getPassword());
         return userRepository.save(user);
     }
 
